@@ -13,7 +13,8 @@ import random
 import re
 import sys
 
-# Complete the checkMagazine function below.
+# Complete the checkMagazine function below. - Did not pass all 22 test cases.
+""" 
 def checkMagazine(magazine, note):
     mag = list(magazine)
     for r in note:
@@ -21,6 +22,17 @@ def checkMagazine(magazine, note):
             mag.remove(r)
         else:
             return False
+    return True
+"""
+# Passed all test cases - code inspired from leetcode.
+def checkMagazine(magazine, note):
+    d = dict()
+    for char in magazine:
+        d[char] = d.get(char, 0) + 1
+    for char in note:
+        if(char not in d or d[char] <= 0):
+            return False
+        d[char] = d.get(char, 0) - 1
     return True
 
 if __name__ == '__main__':
